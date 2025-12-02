@@ -21,5 +21,10 @@ export default function Home() {
 
   console.log(topMovies);
 
-  return <div>home</div>;
+  return (
+    <div>
+      home
+      <div></div>
+    </div>
+  );
 }
