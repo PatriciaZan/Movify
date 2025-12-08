@@ -3,3 +3,34 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.Dashboard {
+  margin: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 0.8fr;
+  grid-template-rows: 0.25fr 1fr 0.3fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.Dashboard-navBar {
+  grid-area: 1 / 1 / 2 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Dashboard-banner-left {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+.Dashboard-banner-right {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.Dashboard-infos {
+  grid-area: 2 / 3 / 3 / 4;
+}
+
+.Dashboard-cards {
+  grid-area: 4 / 1 / 5 / 4;
+}
