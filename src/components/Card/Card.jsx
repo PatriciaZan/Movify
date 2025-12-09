@@ -3,11 +3,11 @@ import React from "react";
 
 import { FaStar } from "react-icons/fa6";
 
-function Card({ poster, title, votes, release }) {
+function Card({ poster, id, title, votes, release, onHandleShow }) {
   const stringLimit = 15;
 
   return (
-    <div className="Card-container">
+    <div className="Card-container" onClick={() => onHandleShow("/about", id)}>
       <img
         src={`https://image.tmdb.org/t/p/original${poster}`}
         alt={`Poster`}
