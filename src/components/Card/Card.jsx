@@ -2,12 +2,20 @@ import "./card.sass";
 import React from "react";
 
 import { FaStar } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router-dom";
 
-function Card({ poster, title, votes, release }) {
+function Card({ poster, id, title, votes, release, onHandleShow }) {
   const stringLimit = 15;
 
+  const navigate = useNavigate();
+
+  const gotToAbout = () => {
+    navigate("/about");
+  };
+
   return (
-    <div className="Card-container">
+    <div className="Card-container" onClick={() => onHandleShow(id)}>
+      <button onClick={gotToAbout}>About</button>
       <img
         src={`https://image.tmdb.org/t/p/original${poster}`}
         alt={`Poster`}

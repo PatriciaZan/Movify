@@ -11,12 +11,15 @@ import App from "./App.jsx";
 // import Favorites from "./pages/Favorites.jsx";
 // import About from "./components/About.jsx";
 import Home from "./pages/Home.jsx";
+import About from "./pages/About/About.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
         {/* <Route path="/series" element={<TopSeries />} />
         <Route path="/search" element={<Search />} />
         <Route path="/favorites" element={<Favorites />} />
