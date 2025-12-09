@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./dashboard.sass";
-
-// Assets
 
 // Components
 import NavBar from "../../components/NavBar/NavBar";
@@ -16,6 +14,8 @@ import Button from "../../components/Button/Button";
 import UserInfo from "../../components/User/UserInfo";
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   const [page, setPage] = useState("home");
   const [topMovies, setTopMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
@@ -57,8 +57,11 @@ function Dashboard() {
   console.log("POPULAR MOVIES: ", popularMovies);
   console.log("THEATHER MOVIES: ", theatherMovies);
 
-  const handleShow = (item) => {
-    console.log(item);
+  // !
+  const handleShow = (to, item) => {
+    // navigate("/about", { state: { id: item } });
+    navigate(to, { state: { id: item } });
+    console.log("DASHBOARD ITEM: ", item);
   };
 
   // LOADING
@@ -95,6 +98,8 @@ function Dashboard() {
           </div>
           <div className="Dashboard-banner-left">
             <Banner
+              onHandleShow={handleShow}
+              id={popularMovies[0].id}
               header={"Most Popular Movie"}
               posterBig={popularMovies[0].backdrop_path}
               title={popularMovies[0].original_title}
@@ -104,6 +109,8 @@ function Dashboard() {
 
           <div className="Dashboard-banner-right">
             <Banner
+              onHandleShow={handleShow}
+              id={theatherMovies[0].id}
               header={"In Theathers Today"}
               posterBig={theatherMovies[0].backdrop_path}
               title={theatherMovies[0].original_title}
@@ -112,7 +119,11 @@ function Dashboard() {
           </div>
 
           <div className="Dashboard-infos">
-            <UserInfo favorites={"0"} watchList={"0"} />
+            <UserInfo
+              onHandleShow={handleShow}
+              favorites={"0"}
+              watchList={"0"}
+            />
           </div>
 
           <div className="Dashboard-btns">

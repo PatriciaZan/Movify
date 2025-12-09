@@ -13,6 +13,7 @@ import App from "./App.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About/About.jsx";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
+import Status from "./pages/Status/Status.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/" element={<App />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
+        <Route path="/status" element={<Status />} />
         {/* <Route path="/series" element={<TopSeries />} />
         <Route path="/search" element={<Search />} />
         <Route path="/favorites" element={<Favorites />} />
