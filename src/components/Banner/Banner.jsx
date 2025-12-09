@@ -1,9 +1,12 @@
 import "./banner.sass";
 import React from "react";
 
-function Banner({ header, posterBig, title, overview }) {
+function Banner({ onHandleShow, id, header, posterBig, title, overview }) {
   return (
-    <div className="Banner-container">
+    <div
+      className="Banner-container"
+      onClick={() => onHandleShow("/about", id)}
+    >
       <div className="Banner-image">
         <img
           width={"200px"}

@@ -4,9 +4,9 @@ import React from "react";
 import { MdLocalMovies } from "react-icons/md";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
-export default function UserInfo({ favorites, watchList }) {
+export default function UserInfo({ onHandleShow, favorites, watchList }) {
   return (
-    <div className="UserInfo-container">
+    <div className="UserInfo-container" onClick={() => onHandleShow("/status")}>
       <h4>
         <MdLocalMovies /> Your's Status
       </h4>
