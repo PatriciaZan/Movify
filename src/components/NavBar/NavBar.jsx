@@ -1,15 +1,17 @@
 import "./navBar.sass";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 import { IoIosSearch } from "react-icons/io";
 
-function NavBar({ page, handlePage }) {
+function NavBar() {
   return (
     <div className="NavBar-container">
       <ul className="NavBar-ul">
-        <button onClick={() => handlePage("home")}>Movies</button>
-        <button onClick={() => handlePage("series")}>Series</button>
-        <button onClick={() => handlePage("yours")}>Yours</button>
+        <NavLink>Movies</NavLink>
+        <NavLink to="series">Series</NavLink>
+        <NavLink>Favorites</NavLink>
+
         <button>
           <IoIosSearch />
         </button>

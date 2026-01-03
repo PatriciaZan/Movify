@@ -13,11 +13,11 @@ function Card({ poster, id, title, votes, release, onHandleShow }) {
         alt={`Poster`}
       />
       <div className="Card-infos">
-        <h3>
+        {/* <h3>
           {title.length > stringLimit
             ? title.slice(0, stringLimit) + " ..."
             : title}
-        </h3>
+        </h3> */}
         <div className="span-container">
           <span>
             <FaStar /> {votes}
