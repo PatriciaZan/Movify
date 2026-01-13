@@ -8,7 +8,7 @@ function NavBar() {
   return (
     <div className="NavBar-container">
       <ul className="NavBar-ul">
-        <NavLink>Movies</NavLink>
+        <NavLink to="/">Movies</NavLink>
         <NavLink to="series">Series</NavLink>
         <NavLink>Favorites</NavLink>
 
