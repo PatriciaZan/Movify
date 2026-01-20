@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 
-import { getTopSeries } from "../../services/Series";
+import { getTopAnimes } from "../../services/Animes";
 
-export default function SeriesPage() {
-  const [series, setSeries] = useState([]);
+export default function AnimesPage() {
+  const [animes, setAnimes] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
-  async function getSeries() {
+  async function getAnimes() {
     setLoading(true);
     try {
-      const resTopSeries = await getTopSeries();
+      const resTopAnimes = await getTopAnimes();
 
-      setSeries(resTopSeries.results);
+      setAnimes(resTopAnimes);
 
       setLoading(false);
     } catch (err) {
@@ -22,20 +22,19 @@ export default function SeriesPage() {
   }
 
   useEffect(() => {
-    getSeries();
+    getAnimes();
   }, []);
 
   // LOGS
-  console.log("SERIES: ", series);
+  console.log("Animes: ", animes);
 
   if (loading) {
     return <p>Loading...</p>;
   }
-
   return (
     <div>
       <NavBar />
-      SeriesPage
+      AnimesPage
     </div>
   );
 }

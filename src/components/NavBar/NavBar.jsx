@@ -1,23 +1,13 @@
-import "./navBar.sass";
-import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { IoIosSearch } from "react-icons/io";
-
-function NavBar() {
+export default function NavBar() {
   return (
-    <div className="NavBar-container">
-      <ul className="NavBar-ul">
+    <nav>
+      <ul>
         <NavLink to="/">Movies</NavLink>
-        <NavLink to="series">Series</NavLink>
-        <NavLink>Favorites</NavLink>
-
-        <button>
-          <IoIosSearch />
-        </button>
+        <NavLink to="/series">Series</NavLink>
+        <NavLink to="/animes">Animes</NavLink>
       </ul>
-    </div>
+    </nav>
   );
 }
-
-export default NavBar;
