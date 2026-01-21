@@ -34,7 +34,7 @@ export default function SeriesPage() {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       SeriesPage
     </div>
   );

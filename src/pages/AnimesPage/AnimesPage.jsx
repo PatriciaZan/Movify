@@ -12,9 +12,7 @@ export default function AnimesPage() {
     setLoading(true);
     try {
       const resTopAnimes = await getTopAnimes();
-
-      setAnimes(resTopAnimes);
-
+      setAnimes(resTopAnimes.data);
       setLoading(false);
     } catch (err) {
       console.log("ERROR", err);
@@ -31,9 +29,10 @@ export default function AnimesPage() {
   if (loading) {
     return <p>Loading...</p>;
   }
+
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       AnimesPage
     </div>
   );

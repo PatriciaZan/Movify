@@ -38,7 +38,7 @@ export default function MoviesPage() {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       MoviesPage
     </div>
   );

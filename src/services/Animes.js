@@ -1,6 +1,6 @@
 //https://api.jikan.moe/v4/top/anime
 
-import { JIKAN } from "axios";
+import { JIKAN } from "../api/axios";
 
 const URL_TOP_ANIME = "/top/anime";
 
