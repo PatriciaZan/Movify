@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 
-import { getTopMovies } from "../../services/Movies";
+import { getTopMovies, getTopRatedMovies } from "../../services/Movies";
+import Card from "../../components/Card/Card";
+import Banner from "../../components/Banner/Banner";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
-  //const [popularMovies, setPopularMovies] = useState([]);
-  //const [theatherMovies, setTheatherMovies] = useState([]);
-
+  const [topRated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
 
   async function getTop() {
     setLoading(true);
     try {
       const resTopMovies = await getTopMovies();
-      //const resPopularMovies = await getPopularMovies();
-      //const resTheatherMovies = await getTheatherMovies();
+      const resTopRated = await getTopRatedMovies();
+
       setMovies(resTopMovies.results);
-      //setPopularMovies(resPopularMovies.results);
-      //setTheatherMovies(resTheatherMovies.results);
+      setTopRated(resTopRated.results);
       setLoading(false);
     } catch (err) {
       console.log("ERROR", err);
@@ -30,16 +29,41 @@ export default function MoviesPage() {
   }, []);
 
   // LOGS
-  console.log("MOVIES: ", movies);
+  //console.log("MOVIES: ", movies);
+  //console.log("topRated: ", topRated);
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div>
+    <>
       {/* <NavBar /> */}
       MoviesPage
-    </div>
+      <hr />
+      {movies && movies.length > 0 ? (
+        <Banner contentBanner={movies.slice(0, 3)} />
+      ) : (
+        <p>Loading</p>
+      )}
+      <div>
+        Top Movies
+        {movies && movies.length > 0 ? (
+          <Card content={movies} />
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
+      <hr />
+      <div>
+        Top Movies
+        {topRated && topRated.length > 0 ? (
+          <Card content={topRated} />
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
+      <hr />
+    </>
   );
 }

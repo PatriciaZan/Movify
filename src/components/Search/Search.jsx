@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getSearch } from "../../services/Search";
 import SearchResult from "../SearchResults/SearchResult";
 
 export default function Search() {
   const [input, setInput] = useState("");
   const [searchResponse, setSearchResponse] = useState([]);
-  const [loadingSearch, setLoadingSearch] = useState(false);
+  const [loadingSearch, setLoadingSearch] = useState(true);
 
   async function fetchDataSearch(value) {
     try {
       const resSearch = await getSearch(value);
       setSearchResponse(resSearch.results);
-      setLoadingSearch(true);
+      setLoadingSearch(false);
     } catch (err) {
       console.log("ERROR", err);
     }
@@ -23,6 +23,8 @@ export default function Search() {
     e.preventDefault();
     fetchDataSearch(input);
   };
+
+  //useEffect(() => {}, [searchResponse]);
 
   return (
     <div>
@@ -36,7 +38,11 @@ export default function Search() {
       </form>
 
       <div>
-        <SearchResult />
+        {searchResponse && searchResponse.length > 0 ? (
+          <SearchResult element={searchResponse} />
+        ) : (
+          <p>Não</p>
+        )}
       </div>
     </div>
   );

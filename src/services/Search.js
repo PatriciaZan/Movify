@@ -1,7 +1,5 @@
 import { TMDB } from "../api/axios";
 
-const URL_SEARCH = "/search/multi";
-
 export const getSearch = async (value) => {
   try {
     const response = await TMDB.get(`/search/multi?query=${value}`, {
