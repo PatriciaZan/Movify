@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
 
-import { getTopAnimes } from "../../services/Animes";
+import { getCharactersAnimeAPI, getTopAnimesAPI } from "../../services/Animes";
+import Card from "../../components/Card/Card";
+import BannerAnime from "../../components/BannerAnime/BannerAnime";
+import Search from "../../components/Search/Search";
 
 export default function AnimesPage() {
   const [animes, setAnimes] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
   async function getAnimes() {
     setLoading(true);
     try {
-      const resTopAnimes = await getTopAnimes();
+      const resTopAnimes = await getTopAnimesAPI();
+      const resCharacters = await getCharactersAnimeAPI();
       setAnimes(resTopAnimes.data);
+      setCharacters(resCharacters.data);
       setLoading(false);
     } catch (err) {
       console.log("ERROR", err);
@@ -25,6 +31,7 @@ export default function AnimesPage() {
 
   // LOGS
   console.log("Animes: ", animes);
+  console.log("CHARACTERS: ", characters);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -33,7 +40,29 @@ export default function AnimesPage() {
   return (
     <div>
       {/* <NavBar /> */}
+      <hr />
+      <Search type={"anime"} />
       AnimesPage
+      <hr />
+      {animes && animes.length > 0 ? (
+        <BannerAnime contentBanner={animes.slice(0, 3)} type="anime" />
+      ) : (
+        <p>Loading</p>
+      )}
+      <hr />
+      {animes && animes.length > 0 ? (
+        <Card content={animes} type={"anime"} />
+      ) : (
+        <p>Loading Animes</p>
+      )}
+      <hr />
+      <div>
+        {characters && characters.length > 0 ? (
+          <Card content={characters} type={"anime"} />
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
     </div>
   );
 }

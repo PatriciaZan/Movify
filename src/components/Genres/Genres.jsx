@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getMoviesGenres } from "../../services/Movies";
+import Card from "../Card/Card";
 
 export default function Genres() {
   const [movieGenre, setMovieGenre] = useState([]);
@@ -15,10 +16,14 @@ export default function Genres() {
     }
   }
 
-  const handleGenres = (genreValue) => {
+  const handleGenres = (e, genreValue) => {
+    e.preventDefault();
     setGenreID(genreValue);
-    getGenres();
   };
+
+  useEffect(() => {
+    getGenres();
+  }, [genreID]);
 
   return (
     <>

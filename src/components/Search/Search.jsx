@@ -1,15 +1,38 @@
 import React, { useEffect, useState } from "react";
-import { getSearch } from "../../services/Search";
+import {
+  getSearchMoviesAPI,
+  getSearchAnimeAPI,
+  getSearchSeriesAPI,
+} from "../../services/Search";
 import SearchResult from "../SearchResults/SearchResult";
 
-export default function Search() {
+export default function Search({ type }) {
   const [input, setInput] = useState("");
   const [searchResponse, setSearchResponse] = useState([]);
   const [loadingSearch, setLoadingSearch] = useState(true);
 
   async function fetchDataSearch(value) {
+    setLoadingSearch(true);
+    if (type === "anime") {
+      try {
+        const resSearch = await getSearchAnimeAPI(value);
+        setSearchResponse(resSearch.results);
+      } catch (err) {
+        console.log("error", err);
+      }
+    }
+
+    if (type === "series") {
+      try {
+        const resSearch = await getSearchSeriesAPI(value);
+        setSearchResponse(resSearch.results);
+      } catch (err) {
+        console.log("error", err);
+      }
+    }
+
     try {
-      const resSearch = await getSearch(value);
+      const resSearch = await getSearchMoviesAPI(value);
       setSearchResponse(resSearch.results);
       setLoadingSearch(false);
     } catch (err) {
@@ -23,8 +46,6 @@ export default function Search() {
     e.preventDefault();
     fetchDataSearch(input);
   };
-
-  //useEffect(() => {}, [searchResponse]);
 
   return (
     <div>

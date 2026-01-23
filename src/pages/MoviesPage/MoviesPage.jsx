@@ -4,6 +4,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getTopMovies, getTopRatedMovies } from "../../services/Movies";
 import Card from "../../components/Card/Card";
 import Banner from "../../components/Banner/Banner";
+import Genres from "../../components/Genres/Genres";
+import Search from "../../components/Search/Search";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -39,6 +41,8 @@ export default function MoviesPage() {
   return (
     <>
       {/* <NavBar /> */}
+      <Search type="movies" />
+      <hr />
       MoviesPage
       <hr />
       {movies && movies.length > 0 ? (
@@ -64,6 +68,7 @@ export default function MoviesPage() {
         )}
       </div>
       <hr />
+      <Genres />
     </>
   );
 }

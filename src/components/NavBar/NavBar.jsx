@@ -9,7 +9,7 @@ export default function NavBar() {
         <NavLink to="/series">Series</NavLink>
         <NavLink to="/animes">Animes</NavLink>
 
-        <Search />
+        {/* <Search /> */}
       </ul>
     </nav>
   );
