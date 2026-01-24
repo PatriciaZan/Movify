@@ -1,32 +1,39 @@
-import "./card.sass";
 import React from "react";
+import { Link } from "react-router-dom";
 
-import { FaStar } from "react-icons/fa6";
+export default function Card({ content, type }) {
+  let itemID;
 
-function Card({ poster, id, title, votes, release, onHandleShow }) {
-  const stringLimit = 15;
+  const handleSelect = (e, item) => {
+    e.preventDefault();
+    itemID = item.id;
+
+    console.log(item);
+    console.log(itemID);
+  };
 
   return (
-    <div className="Card-container" onClick={() => onHandleShow("/about", id)}>
-      <img
-        src={`https://image.tmdb.org/t/p/original${poster}`}
-        alt={`Poster`}
-      />
-      <div className="Card-infos">
-        <h3>
-          {title.length > stringLimit
-            ? title.slice(0, stringLimit) + " ..."
-            : title}
-        </h3>
-        <div className="span-container">
-          <span>
-            <FaStar /> {votes}
-          </span>
-          <span>{release.length > 4 ? release.slice(0, 4) : "no date"}</span>
+    <div style={{ display: "flex" }}>
+      {content.map((item) => (
+        <div onClick={(e) => handleSelect(e, item)}>
+          <Link to={`/about/${itemID}`} state={itemID}>
+            {type === "anime" ? (
+              <img
+                style={{ width: "100px" }}
+                src={item.images.jpg.image_url}
+                alt=""
+              />
+            ) : (
+              <img
+                style={{ width: "100px" }}
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt=""
+              />
+            )}
+            {/* <h3>{item.name ? item.name : item.title}</h3> */}
+          </Link>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
-
-export default Card;

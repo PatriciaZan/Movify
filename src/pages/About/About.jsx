@@ -1,22 +1,21 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function About() {
-  const navigate = useNavigate();
   const location = useLocation();
+  const { state } = location;
 
-  const itemID = location.state.id;
-  console.log("ABOUT ID LOCATION: ", itemID);
+  console.log(state);
 
-  const goDashboard = () => {
-    navigate("/");
-  };
+  if (!state) {
+    return <p>Error reciving the data </p>;
+  }
 
+  //const { item } = state;
   return (
     <div>
-      <button onClick={goDashboard}> Return </button>
-
-      {itemID}
+      About
+      {/* <p>{item.title}</p> */}
     </div>
   );
 }

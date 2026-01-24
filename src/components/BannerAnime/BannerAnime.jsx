@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Banner({ contentBanner, type }) {
+export default function BannerAnime({ contentBanner, type }) {
   const handleSelect = (e, item) => {
     e.preventDefault();
     console.log(item);
