@@ -5,6 +5,7 @@ import { getCharactersAnimeAPI, getTopAnimesAPI } from "../../services/Animes";
 import Card from "../../components/Card/Card";
 import BannerAnime from "../../components/BannerAnime/BannerAnime";
 import Search from "../../components/Search/Search";
+import Banner from "../../components/Banner/Banner";
 
 export default function AnimesPage() {
   const [animes, setAnimes] = useState([]);
@@ -45,7 +46,7 @@ export default function AnimesPage() {
       AnimesPage
       <hr />
       {animes && animes.length > 0 ? (
-        <BannerAnime contentBanner={animes.slice(0, 3)} type="anime" />
+        <Banner contentBanner={animes.slice(0, 3)} type="anime" />
       ) : (
         <p>Loading</p>
       )}

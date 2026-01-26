@@ -45,14 +45,14 @@ export default function SeriesPage() {
       SeriesPage
       <hr />
       {series && series.length > 0 ? (
-        <Banner contentBanner={series.slice(0, 3)} />
+        <Banner contentBanner={series.slice(0, 3)} type={"serie"} />
       ) : (
         <p>Loading</p>
       )}
       <div>
         Top Series
         {series && series.length > 0 ? (
-          <Card content={series} />
+          <Card content={series} type={"serie"} />
         ) : (
           <p>Loading</p>
         )}

@@ -1,22 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Card({ content, type }) {
-  let itemID;
+  const navigate = useNavigate();
 
-  const handleSelect = (e, item) => {
-    e.preventDefault();
-    itemID = item.id;
+  const handleNavigate = (item, type) => {
+    const dataToPass = {
+      id: item.id === undefined ? item.mal_id : item.id,
+      typeToPass: type,
+    };
 
+    navigate(`/about/${item.id === undefined ? item.mal_id : item.id}`, {
+      state: dataToPass,
+    });
+  };
+
+  const handleFavorite = (item) => {
     console.log(item);
-    console.log(itemID);
   };
 
   return (
     <div style={{ display: "flex" }}>
       {content.map((item) => (
-        <div onClick={(e) => handleSelect(e, item)}>
-          <Link to={`/about/${itemID}`} state={itemID}>
+        <div>
+          <div>
+            <button onClick={() => handleFavorite(item)}>Favorite</button>
+            <button>Wish Watch</button>
+          </div>
+          <div onClick={() => handleNavigate(item, type)}>
+            {/* <Link to={`/about/${itemID}`} state={itemID}> */}
             {type === "anime" ? (
               <img
                 style={{ width: "100px" }}
@@ -31,7 +43,8 @@ export default function Card({ content, type }) {
               />
             )}
             {/* <h3>{item.name ? item.name : item.title}</h3> */}
-          </Link>
+            {/* </Link> */}
+          </div>
         </div>
       ))}
     </div>

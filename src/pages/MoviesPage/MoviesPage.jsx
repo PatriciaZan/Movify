@@ -46,14 +46,14 @@ export default function MoviesPage() {
       MoviesPage
       <hr />
       {movies && movies.length > 0 ? (
-        <Banner contentBanner={movies.slice(0, 3)} />
+        <Banner contentBanner={movies.slice(0, 3)} type={"movie"} />
       ) : (
         <p>Loading</p>
       )}
       <div>
         Top Movies
         {movies && movies.length > 0 ? (
-          <Card content={movies} />
+          <Card content={movies} type={"movie"} />
         ) : (
           <p>Loading</p>
         )}
