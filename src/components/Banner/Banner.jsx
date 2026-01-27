@@ -1,15 +1,26 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Banner({ contentBanner, type }) {
-  const handleSelect = (e, item) => {
-    e.preventDefault();
+  const navigate = useNavigate();
+
+  const handleNavigate = (item, type) => {
+    const dataToPass = {
+      id: item.id === undefined ? item.mal_id : item.id,
+      typeToPass: type,
+    };
+
+    navigate(`/about/${item.id === undefined ? item.mal_id : item.id}`, {
+      state: dataToPass,
+    });
+
     console.log(item);
     console.log(type);
   };
   return (
     <div>
       {contentBanner.map((item) => (
-        <div onClick={(e) => handleSelect(e, item)}>
+        <div onClick={() => handleNavigate(item, type)}>
           <img
             style={{ height: "100px" }}
             src={

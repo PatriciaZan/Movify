@@ -32,8 +32,6 @@ export default function Card({ content, addBtn, removeBtn, status }) {
   //using localStorage to persist data and access in more pages
   const localStorageSave = (items) => {
     localStorage.setItem("Favorite-movies", JSON.stringify(items));
-
-    //window.dispatchEvent(new Event("Storage"));
   };
 
   const handleAddFavorite = (item) => {
@@ -58,7 +56,7 @@ export default function Card({ content, addBtn, removeBtn, status }) {
   const handleRemoveFavorite = (item) => {
     console.log("ITEM: ", item);
     const newFavoriteArray = favorites.filter(
-      (favorite) => favorite.id !== item.id
+      (favorite) => favorite.id !== item.id,
     );
     alert("Removed from favorites");
     setFavorites(newFavoriteArray);
