@@ -6,11 +6,17 @@ import Card from "../../components/Card/Card";
 import Banner from "../../components/Banner/Banner";
 import Genres from "../../components/Genres/Genres";
 import Search from "../../components/Search/Search";
+import { getStoredFavorites } from "../../utils/LocalStorage";
+import Favorites from "../../components/Favorites/Favorites";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [movieFavorites, setMovieFavorites] = useState(
+    getStoredFavorites("Favorite-movies"),
+  );
 
   async function getTop() {
     setLoading(true);
@@ -50,6 +56,7 @@ export default function MoviesPage() {
       ) : (
         <p>Loading</p>
       )}
+      <Favorites favorites={movieFavorites} />
       <div>
         Top Movies
         {movies && movies.length > 0 ? (

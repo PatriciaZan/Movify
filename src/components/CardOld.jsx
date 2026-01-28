@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import About from "./About";
 
-import "../styles/components/card.sass";
-
 // Will recive an array (movies/series/favorites/search)
-export default function Card({ content, addBtn, removeBtn, status }) {
+export default function CardOld({ content, addBtn, removeBtn, status }) {
   //const localStorageData = JSON.parse(localStorage.getItem("Favorite-movies"));
   const [favorites, setFavorites] = useState([]);
   const [modalAbout, setModalAbout] = useState(false);
