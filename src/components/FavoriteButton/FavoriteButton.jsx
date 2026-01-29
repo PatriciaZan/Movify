@@ -3,11 +3,13 @@ import {
   getStoredFavorites,
   setStoredFavorites,
 } from "../../utils/LocalStorage";
+import { useFavorites } from "../../context/FavoritesContext";
 
 export default function FavoriteButton({ item }) {
-  const [favorites, setFavorites] = useState(
-    getStoredFavorites("Favorite-movies"),
-  );
+  // const [favorites, setFavorites] = useState(
+  //   getStoredFavorites("Favorite-movies"),
+  // );
+  const { favorites, setFavorites } = useFavorites();
   const [storeIds, setStoredIds] = useState([]);
 
   //const isFavorite = favorites.includes(itemId);
@@ -30,7 +32,7 @@ export default function FavoriteButton({ item }) {
 
       // Se ele não foi adicionado antes agora ele é adicionado
       const newFavouriteArray = [...favorites, item];
-      alert("Added to Favorites");
+      //alert("Added to Favorites");
       setFavorites(newFavouriteArray);
       //console.log("FAVORITE: ", favorites);
       localStorageSave(newFavouriteArray);

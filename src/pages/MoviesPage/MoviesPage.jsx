@@ -8,15 +8,17 @@ import Genres from "../../components/Genres/Genres";
 import Search from "../../components/Search/Search";
 import { getStoredFavorites } from "../../utils/LocalStorage";
 import Favorites from "../../components/Favorites/Favorites";
+import { useFavorites } from "../../context/FavoritesContext";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [movieFavorites, setMovieFavorites] = useState(
-    getStoredFavorites("Favorite-movies"),
-  );
+  // const [movieFavorites, setMovieFavorites] = useState(
+  //   getStoredFavorites("Favorite-movies"),
+  // );
+  const { favorites, setFavorites } = useFavorites();
 
   async function getTop() {
     setLoading(true);
@@ -56,7 +58,7 @@ export default function MoviesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={movieFavorites} />
+      <Favorites favorites={favorites} />
       <div>
         Top Movies
         {movies && movies.length > 0 ? (
