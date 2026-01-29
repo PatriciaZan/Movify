@@ -26,7 +26,7 @@ export const getTopRatedMovies = async (language = "en-US") => {
 };
 
 export const getMoviesGenres = async (genreID) => {
-  console.log(genreID);
+  //console.log(genreID);
 
   try {
     const response = await axios.get(`/discover/movie?with_genres=${genreID}`, {

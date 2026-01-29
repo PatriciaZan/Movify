@@ -6,7 +6,6 @@ import Card from "../../components/Card/Card";
 import Banner from "../../components/Banner/Banner";
 import Genres from "../../components/Genres/Genres";
 import Search from "../../components/Search/Search";
-import { getStoredFavorites } from "../../utils/LocalStorage";
 import Favorites from "../../components/Favorites/Favorites";
 import { useFavorites } from "../../context/FavoritesContext";
 
@@ -18,7 +17,7 @@ export default function MoviesPage() {
   // const [movieFavorites, setMovieFavorites] = useState(
   //   getStoredFavorites("Favorite-movies"),
   // );
-  const { favorites, setFavorites } = useFavorites();
+  const { favorites } = useFavorites();
 
   async function getTop() {
     setLoading(true);
