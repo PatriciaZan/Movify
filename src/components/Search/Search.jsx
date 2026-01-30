@@ -40,7 +40,7 @@ export default function Search({ type }) {
     }
   }
 
-  console.log("SEARCH: ", searchResponse);
+  //console.log("SEARCH: ", searchResponse);
 
   const handleChange = (e) => {
     e.preventDefault();

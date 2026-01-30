@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 
 import CardCast from "./CardCast";
 
-import "../styles/components/about.sass";
-
 export default function About({ modalContent, onClose, status }) {
   //const type = status;
   let type;

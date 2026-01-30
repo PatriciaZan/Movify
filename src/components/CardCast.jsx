@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../styles/components/cardcast.sass";
 
 export default function CardCast({ content }) {
   console.log("CARD CAST CONTENT: ", content);

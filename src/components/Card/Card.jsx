@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function Card({ content, type }) {
   const navigate = useNavigate();
@@ -15,18 +16,19 @@ export default function Card({ content, type }) {
     });
   };
 
-  const handleFavorite = (item) => {
-    console.log(item);
-  };
+  // const handleFavorite = (item) => {
+  //   console.log(item);
+  // };
 
   return (
     <div style={{ display: "flex" }}>
       {content.map((item) => (
         <div>
-          <div>
+          {/* <div>
             <button onClick={() => handleFavorite(item)}>Favorite</button>
             <button>Wish Watch</button>
-          </div>
+          </div> */}
+          <FavoriteButton item={item} />
           <div onClick={() => handleNavigate(item, type)}>
             {/* <Link to={`/about/${itemID}`} state={itemID}> */}
             {type === "anime" ? (
