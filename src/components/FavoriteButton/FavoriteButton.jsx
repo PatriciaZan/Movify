@@ -1,68 +1,44 @@
-import React, { useEffect, useState } from "react";
-import {
-  getStoredFavorites,
-  setStoredFavorites,
-} from "../../utils/LocalStorage";
 import { useFavorites } from "../../context/FavoritesContext";
 
 export default function FavoriteButton({ item }) {
-  // const [favorites, setFavorites] = useState(
-  //   getStoredFavorites("Favorite-movies"),
-  // );
   const { favorites, setFavorites } = useFavorites();
 
-  const [storeIds, setStoredIds] = useState([]);
-
-  //const isFavorite = favorites.includes(itemId);
   const localStorageSave = (items) => {
     localStorage.setItem("Favorite-movies", JSON.stringify(items));
   };
 
+  const localStorageRemove = (item) => {
+    localStorage.removeItem("Favorit-movie", JSON.stringify(item));
+  };
+
   const handleAddFavorite = (item) => {
-    console.log("--- START ----");
-    //console.log("2. StoreIds: ", storeIds);
+    const exists = favorites.some((fav) => fav.id === item.id);
 
-    if (storeIds.includes(item.id)) {
-      console.log("5. Já inclui o Item ID");
-    } else {
-      console.log("1. StoreIds - ", storeIds);
-      //const newId = [...storeIds, item.id];
-      //console.log("2. NewId - ", newId);
-
-      setStoredIds([...storeIds, item.id]);
-      console.log("3. setStoredIds - ", storeIds);
-      console.log("7. Adicionando novo filme");
-
+    if (!exists) {
       const newFavouriteArray = [...favorites, item];
       setFavorites(newFavouriteArray);
       localStorageSave(newFavouriteArray);
-      console.log("---Fim----");
+    } else {
+      console.log("Já está nos favoritos");
     }
-
-    // !
-    // if (storeIds.includes(item.id)) {
-    //   console.log("Já está nos favoritos");
-    // } else { // !
-    // Cria um array que irá conter os ids, serve para checar se o item já foi adicionado
-    //const newId = [...storeIds, item.id];
-    //setStoredIds(newId);
-
-    // Se ele não foi adicionado antes agora ele é adicionado
-    //const newFavouriteArray = [...favorites, item];
-    //setFavorites(newFavouriteArray);
-    //localStorageSave(newFavouriteArray);
-
-    //}
   };
 
-  // useEffect(() => {
-  //   setStoredFavorites("favoritesList", favorites);
-  // }, [favorites]);
+  const handleRemoveFavorite = (item) => {
+    console.log("Removing", item);
+    const removeFavoriteArray = favorites.filter(
+      (favorites) => favorites.id !== item.id,
+    );
+
+    console.log(removeFavoriteArray);
+
+    setFavorites(removeFavoriteArray);
+    localStorageRemove(item);
+  };
 
   return (
     <div>
       <button onClick={() => handleAddFavorite(item)}>Favorite</button>
-      <button>Remove</button>
+      <button onClick={() => handleRemoveFavorite(item)}>Remove</button>
     </div>
   );
 }

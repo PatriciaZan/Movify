@@ -14,9 +14,6 @@ export default function MoviesPage() {
   const [topRated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // const [movieFavorites, setMovieFavorites] = useState(
-  //   getStoredFavorites("Favorite-movies"),
-  // );
   const { favorites } = useFavorites();
 
   async function getTop() {
@@ -57,7 +54,7 @@ export default function MoviesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={favorites} />
+      <Favorites favorites={favorites} type={""} />
       <div>
         Top Movies
         {movies && movies.length > 0 ? (

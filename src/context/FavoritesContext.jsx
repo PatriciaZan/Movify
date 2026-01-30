@@ -16,9 +16,9 @@ export function FavoriteProvider({ children }) {
   //     });
   //   }
 
-  //   function removeFavorite(id) {
-  //     return favorites.some((item) => item.id === id);
-  //   }
+  //function removeFavorite(id) {
+  //  return favorites.some((item) => item.id === id);
+  //}
 
   //   function isFavorite(id) {
   //     setFavorites((prev) => prev.filter((item) => item.id !== id));
