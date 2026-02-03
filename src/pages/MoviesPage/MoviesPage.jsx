@@ -54,11 +54,11 @@ export default function MoviesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={favorites} type={""} />
+      <Favorites favorites={favorites} />
       <div>
         Top Movies
         {movies && movies.length > 0 ? (
-          <Card content={movies} type={"movie"} />
+          <Card content={movies} />
         ) : (
           <p>Loading</p>
         )}
