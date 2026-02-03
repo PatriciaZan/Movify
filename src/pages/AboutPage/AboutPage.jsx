@@ -6,7 +6,7 @@ import {
   getDetailsSerieAPI,
 } from "../../services/Details";
 
-export default function About() {
+export default function AboutPage() {
   const { itemId } = useParams();
   const location = useLocation();
   const { state } = location;
