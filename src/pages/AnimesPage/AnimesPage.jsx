@@ -47,7 +47,6 @@ export default function AnimesPage() {
       {/* <NavBar /> */}
       <hr />
       <Search type={"anime"} />
-      AnimesPage
       <hr />
       {animes && animes.length > 0 ? (
         <Banner contentBanner={animes.slice(0, 3)} type="anime" />

@@ -14,7 +14,6 @@ export default function FavoriteButton({ item }) {
   const getId = (item) => {
     // Anime
     if (item?.mal_id) {
-      console.log("JINKAN");
       return item.mal_id;
     }
 

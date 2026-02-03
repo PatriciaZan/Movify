@@ -12,10 +12,9 @@ export default function SearchResult({ element }) {
     <article>
       {element.map((item) => (
         <div onClick={(e) => handleSelect(e, item)}>
-          <h3>{item.name ? item.name : item.title}</h3>
+          <h4>{item.name ? item.name : item.title}</h4>
         </div>
       ))}
-      SearchResult
     </article>
   );
 }

@@ -28,8 +28,8 @@ export default function Genres() {
   return (
     <>
       By genre
-      <button onClick={(e) => handleGenres(e, "16")}>Action</button>
-      <button onClick={(e) => handleGenres(e, "14")}>Animation</button>
+      <button onClick={(e) => handleGenres(e, "14")}>Action</button>
+      <button onClick={(e) => handleGenres(e, "16")}>Animation</button>
       <button onClick={(e) => handleGenres(e, "18")}>Drama</button>
       <button onClick={(e) => handleGenres(e, "27")}>Horror</button>
       <button onClick={(e) => handleGenres(e, "37")}>Western</button>

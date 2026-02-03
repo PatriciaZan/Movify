@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../components/NavBar/NavBar";
 
 import { getTopRatedSeriesAPI, getTopSeriesAPI } from "../../services/Series";
 import Banner from "../../components/Banner/Banner";
@@ -42,10 +41,8 @@ export default function SeriesPage() {
 
   return (
     <div>
-      {/* <NavBar /> */}
       <hr />
       <Search type={"series"} />
-      SeriesPage
       <hr />
       {series && series.length > 0 ? (
         <Banner contentBanner={series.slice(0, 3)} type={"serie"} />

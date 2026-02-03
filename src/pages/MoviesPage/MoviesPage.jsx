@@ -47,7 +47,6 @@ export default function MoviesPage() {
       {/* <NavBar /> */}
       <Search type="movies" />
       <hr />
-      MoviesPage
       <hr />
       {movies && movies.length > 0 ? (
         <Banner contentBanner={movies.slice(0, 3)} type={"movie"} />

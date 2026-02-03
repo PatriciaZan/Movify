@@ -6,7 +6,7 @@ import App from "./App.jsx";
 import MoviesPage from "./pages/MoviesPage/MoviesPage.jsx";
 import SeriesPage from "./pages/SeriesPage/SeriesPage.jsx";
 import AnimesPage from "./pages/AnimesPage/AnimesPage.jsx";
-import About from "./pages/About/About.jsx";
+import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -15,7 +15,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
         <Route path="/animes" element={<AnimesPage />} />
-        <Route path="/about/:itemId" element={<About />} />
+        <Route path="/about/:itemId" element={<AboutPage />} />
       </Route>
     </Routes>
   </BrowserRouter>,
