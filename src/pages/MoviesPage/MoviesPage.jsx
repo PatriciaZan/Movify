@@ -8,6 +8,9 @@ import Genres from "../../components/Genres/Genres";
 import Search from "../../components/Search/Search";
 import Favorites from "../../components/Favorites/Favorites";
 import { useFavorites } from "../../context/FavoritesContext";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../../components/SideBar/Sidebar";
+import { useType } from "../../context/TypeContext";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -15,9 +18,11 @@ export default function MoviesPage() {
   const [loading, setLoading] = useState(true);
 
   const { favorites } = useFavorites();
+  const { type, setType } = useType();
 
   async function getTop() {
     setLoading(true);
+    setType("/");
     try {
       const resTopMovies = await getTopMovies();
       const resTopRated = await getTopRatedMovies();
@@ -53,11 +58,12 @@ export default function MoviesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={favorites} />
+      <Sidebar />
+
       <div>
         Top Movies
         {movies && movies.length > 0 ? (
-          <Card content={movies} />
+          <Card content={movies} type={"movie"} />
         ) : (
           <p>Loading</p>
         )}

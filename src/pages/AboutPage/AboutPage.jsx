@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import {
   getDetailsAnimeAPI,
   getDetailsMovieAPI,
@@ -52,6 +52,7 @@ export default function AboutPage() {
   return (
     <div>
       About
+      <NavLink to="/animes">X</NavLink>
       {/* <p>{item.title}</p> */}
     </div>
   );

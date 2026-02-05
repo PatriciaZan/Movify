@@ -6,6 +6,8 @@ import Card from "../../components/Card/Card";
 import Search from "../../components/Search/Search";
 import { useFavorites } from "../../context/FavoritesContext";
 import Favorites from "../../components/Favorites/Favorites";
+import Sidebar from "../../components/SideBar/Sidebar";
+import { useType } from "../../context/TypeContext";
 
 export default function SeriesPage() {
   const [series, setSeries] = useState([]);
@@ -13,9 +15,11 @@ export default function SeriesPage() {
   const [loading, setLoading] = useState(true);
 
   const { favorites } = useFavorites();
+  const { setType } = useType();
 
   async function getSeries() {
     setLoading(true);
+    setType("/series");
     try {
       const resTopSeries = await getTopSeriesAPI();
       const resTopRated = await getTopRatedSeriesAPI();
@@ -49,7 +53,8 @@ export default function SeriesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={favorites} />
+      <Sidebar />
+      {/* <Favorites favorites={favorites} /> */}
       <div>
         Top Series
         {series && series.length > 0 ? (

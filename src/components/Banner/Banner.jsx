@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Banner({ contentBanner, type }) {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ export default function Banner({ contentBanner, type }) {
       typeToPass: type,
     };
 
-    navigate(`/about/${item.id === undefined ? item.mal_id : item.id}`, {
+    navigate(`about/${item.id === undefined ? item.mal_id : item.id}`, {
       state: dataToPass,
     });
 
@@ -30,6 +30,7 @@ export default function Banner({ contentBanner, type }) {
             }
             alt=""
           />
+          <NavLink to="about">About</NavLink>
           {/* <h3>{item.name ? item.name : item.title}</h3> */}
         </div>
       ))}

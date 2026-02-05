@@ -38,3 +38,14 @@ export const getDetailsAnimeAPI = async (id) => {
     console.log("ERRO FETCHING API ANIME DETAILS: ", err);
   }
 };
+
+export const getDetailsAnimeCharacterAPI = async (id) => {
+  try {
+    const response = await JIKAN.get(`/characters/${id}/full`, {
+      params: { language: "en-US" },
+    });
+    return response.data;
+  } catch (err) {
+    console.log("ERRO FETCHING API ANIME DETAILS: ", err);
+  }
+};
