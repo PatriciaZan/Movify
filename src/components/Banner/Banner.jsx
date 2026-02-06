@@ -1,11 +1,11 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Banner({ contentBanner, type }) {
   const navigate = useNavigate();
 
   const handleNavigate = (item, type) => {
     const dataToPass = {
+      item: item,
       id: item.id === undefined ? item.mal_id : item.id,
       typeToPass: type,
     };
@@ -30,7 +30,6 @@ export default function Banner({ contentBanner, type }) {
             }
             alt=""
           />
-          <NavLink to="about">About</NavLink>
           {/* <h3>{item.name ? item.name : item.title}</h3> */}
         </div>
       ))}
