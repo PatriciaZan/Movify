@@ -71,11 +71,13 @@ export default function Search() {
         />
       </form>
       <div>
-        <span onClick={(e) => handleClose(e)}>X</span>
         {searchResponse && searchResponse.length > 0 ? (
-          <SearchResult element={searchResponse} type={type} />
+          <>
+            <span onClick={(e) => handleClose(e)}>X</span>
+            <SearchResult element={searchResponse} type={type} />
+          </>
         ) : (
-          <p>Não</p>
+          <p>Pesquise</p>
         )}
       </div>
     </div>
