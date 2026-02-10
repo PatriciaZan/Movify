@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Banner({ contentBanner, type }) {
@@ -6,11 +5,12 @@ export default function Banner({ contentBanner, type }) {
 
   const handleNavigate = (item, type) => {
     const dataToPass = {
+      item: item,
       id: item.id === undefined ? item.mal_id : item.id,
       typeToPass: type,
     };
 
-    navigate(`/about/${item.id === undefined ? item.mal_id : item.id}`, {
+    navigate(`about/${item.id === undefined ? item.mal_id : item.id}`, {
       state: dataToPass,
     });
 

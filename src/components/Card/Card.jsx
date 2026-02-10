@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 export default function Card({ content, type }) {
@@ -23,11 +23,12 @@ export default function Card({ content, type }) {
 
   const handleNavigate = (item, type) => {
     const dataToPass = {
+      item: item,
       id: item.id === undefined ? item.mal_id : item.id,
       typeToPass: type,
     };
 
-    navigate(`/about/${item.id === undefined ? item.mal_id : item.id}`, {
+    navigate(`about/${item.id === undefined ? item.mal_id : item.id}`, {
       state: dataToPass,
     });
   };
@@ -36,7 +37,14 @@ export default function Card({ content, type }) {
     <div style={{ display: "flex" }}>
       {content.map((item) => (
         <div>
-          {type === "person" ? <></> : <FavoriteButton item={item} />}
+          {type === "person" ? (
+            <></>
+          ) : (
+            <>
+              {/* <NavLink to="about">About</NavLink> */}
+              <FavoriteButton item={item} />
+            </>
+          )}
           <div onClick={() => handleNavigate(item, type)}>
             <img style={{ width: "100px" }} src={getImagSrc(item)} alt="" />
           </div>

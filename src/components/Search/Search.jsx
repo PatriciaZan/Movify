@@ -5,24 +5,28 @@ import {
   getSearchSeriesAPI,
 } from "../../services/Search";
 import SearchResult from "../SearchResults/SearchResult";
+import { useType } from "../../context/TypeContext";
 
-export default function Search({ type }) {
+export default function Search() {
   const [input, setInput] = useState("");
   const [searchResponse, setSearchResponse] = useState([]);
   const [loadingSearch, setLoadingSearch] = useState(true);
 
+  const { type } = useType();
+  console.log("SEARCH TYPE: ", type);
+
   async function fetchDataSearch(value) {
     setLoadingSearch(true);
-    if (type === "anime") {
+    if (type === "/animes") {
       try {
         const resSearch = await getSearchAnimeAPI(value);
-        setSearchResponse(resSearch.results);
+        setSearchResponse(resSearch);
       } catch (err) {
         console.log("error", err);
       }
     }
 
-    if (type === "series") {
+    if (type === "/series") {
       try {
         const resSearch = await getSearchSeriesAPI(value);
         setSearchResponse(resSearch.results);
@@ -31,12 +35,14 @@ export default function Search({ type }) {
       }
     }
 
-    try {
-      const resSearch = await getSearchMoviesAPI(value);
-      setSearchResponse(resSearch.results);
-      setLoadingSearch(false);
-    } catch (err) {
-      console.log("ERROR", err);
+    if (type === "/") {
+      try {
+        const resSearch = await getSearchMoviesAPI(value);
+        setSearchResponse(resSearch.results);
+        setLoadingSearch(false);
+      } catch (err) {
+        console.log("ERROR", err);
+      }
     }
   }
 
@@ -45,6 +51,13 @@ export default function Search({ type }) {
   const handleChange = (e) => {
     e.preventDefault();
     fetchDataSearch(input);
+    setInput("");
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    setSearchResponse([]);
+    setInput("");
   };
 
   return (
@@ -57,12 +70,14 @@ export default function Search({ type }) {
           onChange={(e) => setInput(e.target.value)}
         />
       </form>
-
       <div>
         {searchResponse && searchResponse.length > 0 ? (
-          <SearchResult element={searchResponse} />
+          <>
+            <span onClick={(e) => handleClose(e)}>X</span>
+            <SearchResult element={searchResponse} type={type} />
+          </>
         ) : (
-          <p>Não</p>
+          <p>Pesquise</p>
         )}
       </div>
     </div>

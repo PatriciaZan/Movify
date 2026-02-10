@@ -3,13 +3,16 @@ import "./App.css";
 
 import NavBar from "./components/NavBar/NavBar";
 import { FavoriteProvider } from "./context/FavoritesContext";
+import { TypeProvider } from "./context/TypeContext";
 
 export default function App() {
   return (
     <>
       <FavoriteProvider>
-        <NavBar />
-        <Outlet />
+        <TypeProvider>
+          <NavBar />
+          <Outlet />
+        </TypeProvider>
       </FavoriteProvider>
     </>
   );

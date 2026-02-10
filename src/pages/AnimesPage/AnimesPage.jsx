@@ -8,6 +8,9 @@ import Search from "../../components/Search/Search";
 import Banner from "../../components/Banner/Banner";
 import { useFavorites } from "../../context/FavoritesContext";
 import Favorites from "../../components/Favorites/Favorites";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../../components/SideBar/Sidebar";
+import { useType } from "../../context/TypeContext";
 
 export default function AnimesPage() {
   const [animes, setAnimes] = useState([]);
@@ -15,9 +18,11 @@ export default function AnimesPage() {
   const [loading, setLoading] = useState(true);
 
   const { favorites } = useFavorites();
+  const { setType } = useType();
 
   async function getAnimes() {
     setLoading(true);
+    setType("/animes");
     try {
       const resTopAnimes = await getTopAnimesAPI();
       const resCharacters = await getCharactersAnimeAPI();
@@ -44,7 +49,6 @@ export default function AnimesPage() {
 
   return (
     <div>
-      {/* <NavBar /> */}
       <hr />
       <Search type={"anime"} />
       <hr />
@@ -53,10 +57,10 @@ export default function AnimesPage() {
       ) : (
         <p>Loading</p>
       )}
-      <Favorites favorites={favorites} />
+      <Sidebar />
       <hr />
       {animes && animes.length > 0 ? (
-        <Card content={animes} />
+        <Card content={animes} type={"anime"} />
       ) : (
         <p>Loading Animes</p>
       )}

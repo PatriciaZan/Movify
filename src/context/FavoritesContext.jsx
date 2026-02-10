@@ -8,22 +8,6 @@ export function FavoriteProvider({ children }) {
     getStoredFavorites("Favorite-movies"),
   );
 
-  //   function addFavorite(item) {
-  //     setFavorites((prev) => {
-  //       const exists = prev.find((fav) => fav.id === item.id);
-  //       if (exists) return prev;
-  //       return [...prev, item];
-  //     });
-  //   }
-
-  //function removeFavorite(id) {
-  //  return favorites.some((item) => item.id === id);
-  //}
-
-  //   function isFavorite(id) {
-  //     setFavorites((prev) => prev.filter((item) => item.id !== id));
-  //   }
-
   return (
     <FavoritesContext.Provider value={{ favorites, setFavorites }}>
       {children}

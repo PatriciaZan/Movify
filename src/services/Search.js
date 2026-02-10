@@ -25,7 +25,7 @@ export const getSearchSeriesAPI = async (value) => {
 export const getSearchAnimeAPI = async (value) => {
   try {
     const response = await JIKAN.get(`/anime?q=${value}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     console.log("ERRO FETCHING API SEARCH: ", err);
   }

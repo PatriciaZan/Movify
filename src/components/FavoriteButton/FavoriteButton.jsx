@@ -58,6 +58,7 @@ export default function FavoriteButton({ item }) {
       handleRemoveFavorite(item);
     } else {
       handleAddFavorite(item);
+      console.log("FAVORITO: ", item);
     }
   };
 

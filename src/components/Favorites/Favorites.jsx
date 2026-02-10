@@ -1,6 +1,9 @@
+import { useFavorites } from "../../context/FavoritesContext";
 import Card from "../Card/Card";
 
-export default function Favorites({ favorites }) {
+export default function Favorites() {
+  const { favorites } = useFavorites();
+
   return (
     <div>
       Favorites Aqui
