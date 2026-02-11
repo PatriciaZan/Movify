@@ -12,6 +12,8 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/SideBar/Sidebar";
 import { useType } from "../../context/TypeContext";
 
+import "./moviesPage.module.css";
+
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [topRated, setTopRated] = useState([]);
@@ -48,7 +50,7 @@ export default function MoviesPage() {
   }
 
   return (
-    <>
+    <div>
       {/* <NavBar /> */}
       <Search type="movies" />
       <hr />
@@ -69,7 +71,7 @@ export default function MoviesPage() {
         )}
       </div>
       <hr />
-      <div>
+      <div className="Card-Container">
         Top Movies
         {topRated && topRated.length > 0 ? (
           <Card content={topRated} />
@@ -79,6 +81,6 @@ export default function MoviesPage() {
       </div>
       <hr />
       <Genres />
-    </>
+    </div>
   );
 }

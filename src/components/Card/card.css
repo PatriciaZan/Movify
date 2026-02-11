@@ -1,0 +1,67 @@
+/* Largura fixa de cada slide (estilo Netflix) */
+.movie-slide {
+  padding: 20px 0;
+  width: 100px !important;
+  transition: transform 0.3s ease;
+}
+
+.movie-card {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- EFEITO DE HOVER --- */
+.movie-slide:hover {
+  transform: scale(1.2);
+  z-index: 10000;
+}
+
+/* Overlay opcional para o botão favorito */
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  padding: 20px 10px 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-slide:hover .movie-info {
+  opacity: 1;
+}
+
+/*  ! Refatorar */
+.movie-info span {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Customização das setas do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  width: 20px;
+  height: 80px;
+  top: 60%;
+  transform: translateY(-50%);
+}
+.carousel-container:hover .swiper-button-next,
+.carousel-container:hover .swiper-button-prev {
+  opacity: 1;
+  color: white;
+}

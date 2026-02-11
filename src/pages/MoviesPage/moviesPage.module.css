@@ -1,0 +1,10 @@
+body {
+  width: 600px;
+  background-color: black;
+}
+
+.Card-Container {
+  width: 600px;
+  background-color: black;
+  overflow: hidden;
+}

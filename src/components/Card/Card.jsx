@@ -2,6 +2,15 @@ import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/bundle";
+import "swiper/css/pagination";
+
+import "./card.css";
+
 export default function Card({ content, type }) {
   const navigate = useNavigate();
 
@@ -34,22 +43,40 @@ export default function Card({ content, type }) {
   };
 
   return (
-    <div style={{ display: "flex" }}>
-      {content.map((item) => (
-        <div>
-          {type === "person" ? (
-            <></>
-          ) : (
-            <>
-              {/* <NavLink to="about">About</NavLink> */}
-              <FavoriteButton item={item} />
-            </>
-          )}
-          <div onClick={() => handleNavigate(item, type)}>
-            <img style={{ width: "100px" }} src={getImagSrc(item)} alt="" />
-          </div>
-        </div>
-      ))}
+    <div className="carousel-container">
+      <Swiper
+        modules={[Navigation]}
+        spaceBetween={10}
+        slidesPerView={"auto"}
+        // centeredSlides={true}
+        navigation
+        // breakpoints={{
+        //   // Responsividade
+        //   320: { slidesPerView: 2 },
+        //   768: { slidesPerView: 3 },
+        //   1024: { slidesPerView: 5 },
+        // }}
+        loop={true}
+      >
+        {content.map((item) => (
+          <SwiperSlide className="movie-slide">
+            <div className="movie-card">
+              {type === "person" ? (
+                <></>
+              ) : (
+                <div className="movie-info">
+                  {/* <NavLink to="about">About</NavLink> */}
+                  <FavoriteButton item={item} />
+                </div>
+              )}
+
+              <div onClick={() => handleNavigate(item, type)}>
+                <img style={{ width: "100px" }} src={getImagSrc(item)} alt="" />
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }
