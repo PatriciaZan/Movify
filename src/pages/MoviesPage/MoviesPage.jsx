@@ -50,18 +50,16 @@ export default function MoviesPage() {
   }
 
   return (
-    <div>
+    <div className="outlet-container">
       {/* <NavBar /> */}
       <Search type="movies" />
-      <hr />
-      <hr />
+
       {movies && movies.length > 0 ? (
         <Banner contentBanner={movies.slice(0, 3)} type={"movie"} />
       ) : (
         <p>Loading</p>
       )}
       <Sidebar />
-
       <div>
         Top Movies
         {movies && movies.length > 0 ? (
@@ -70,7 +68,7 @@ export default function MoviesPage() {
           <p>Loading</p>
         )}
       </div>
-      <hr />
+
       <div className="Card-Container">
         Top Movies
         {topRated && topRated.length > 0 ? (
@@ -79,7 +77,7 @@ export default function MoviesPage() {
           <p>Loading</p>
         )}
       </div>
-      <hr />
+
       <Genres />
     </div>
   );

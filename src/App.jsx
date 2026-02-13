@@ -11,7 +11,7 @@ export default function App() {
       <FavoriteProvider>
         <TypeProvider>
           <NavBar />
-          <Outlet className="outlet" />
+          <Outlet />
         </TypeProvider>
       </FavoriteProvider>
     </>

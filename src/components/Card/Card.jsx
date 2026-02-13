@@ -48,7 +48,6 @@ export default function Card({ content, type }) {
         modules={[Navigation]}
         spaceBetween={10}
         slidesPerView={"auto"}
-        // centeredSlides={true}
         navigation
         // breakpoints={{
         //   // Responsividade
@@ -71,7 +70,7 @@ export default function Card({ content, type }) {
               )}
 
               <div onClick={() => handleNavigate(item, type)}>
-                <img style={{ width: "100px" }} src={getImagSrc(item)} alt="" />
+                <img src={getImagSrc(item)} alt="" />
               </div>
             </div>
           </SwiperSlide>

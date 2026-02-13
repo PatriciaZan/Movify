@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import "../pages.css";
+
 import { getTopRatedSeriesAPI, getTopSeriesAPI } from "../../services/Series";
 import Banner from "../../components/Banner/Banner";
 import Card from "../../components/Card/Card";
@@ -44,33 +46,34 @@ export default function SeriesPage() {
   }
 
   return (
-    <div>
-      <hr />
-      <Search type={"series"} />
-      <hr />
-      {series && series.length > 0 ? (
-        <Banner contentBanner={series.slice(0, 3)} type={"serie"} />
-      ) : (
-        <p>Loading</p>
-      )}
-      <Sidebar />
-      {/* <Favorites favorites={favorites} /> */}
-      <div>
+    <div className="page-container">
+      <div className="page_banner-container">
+        {series && series.length > 0 ? (
+          <Banner contentBanner={series.slice(0, 3)} type={"serie"} />
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
+
+      <div className="page_sidebar-container">
+        <Sidebar />
+      </div>
+
+      <div className="page_content-container">
         Top Series
         {series && series.length > 0 ? (
           <Card content={series} type={"serie"} />
         ) : (
           <p>Loading</p>
         )}
-      </div>
-      <hr />
-      <div>
-        Top Rated
-        {ratedSeries && ratedSeries.length > 0 ? (
-          <Card content={ratedSeries} />
-        ) : (
-          <p>Loading</p>
-        )}
+        <div>
+          Top Rated
+          {ratedSeries && ratedSeries.length > 0 ? (
+            <Card content={ratedSeries} />
+          ) : (
+            <p>Loading</p>
+          )}
+        </div>
       </div>
     </div>
   );
